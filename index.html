@@ -155,7 +155,7 @@ function open(id){const p=document.getElementById(id); if(!p) return; const m=p.
 mains.forEach(b=>b.onclick=()=>open(lastSub[b.dataset.main]));
 document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>open(b.dataset.go));
 open((location.hash||'').slice(1)&&document.getElementById(location.hash.slice(1))?location.hash.slice(1):'v-ov');
-const CH=[['0:00','80'],['0:10','헤리티지'],['0:23','헤리티지북'],['0:55','아카이브'],['1:49','마무리']];
+const CH=[['0:00','80'],['0:10','헤리티지'],['0:23','헤리티지북'],['1:01','아카이브'],['1:57','마무리']];
 const vid=document.getElementById('vid'),chaps=document.getElementById('chaps');
 CH.forEach(([t,n])=>{const b=document.createElement('button');b.innerHTML='<span>'+t+'</span>'+n;const [m,s]=t.split(':').map(Number);b.onclick=()=>{vid.currentTime=m*60+s;vid.play().catch(()=>{})};chaps.appendChild(b)});
 const SECS=[['cover','표지'],['toc','목차'],['p1','PART I · 한눈에 보는 금호'],['p2','PART II · 80년의 궤적'],['p3','PART III · 다시 횃불로'],['ap','부록 · History']];
