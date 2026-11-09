@@ -107,7 +107,7 @@ h2{font-family:var(--serif);font-size:22px;margin:0 0 4px}
   <button role="tab" data-main="a" aria-selected="false">아카이브</button>
  </nav></div>
 <div class="subrow"><nav class="subtabs" id="subs" role="tablist" aria-label="세부 보기"></nav>
- <div class="ctl" data-for="b-ov" hidden><button class="btn sm" id="bovP">‹ 이전</button><span class="count" id="bovC">1 / 2</span><button class="btn sm" id="bovN">다음 ›</button></div>
+ <div class="ctl" data-for="b-ov-x" hidden><button class="btn sm" id="bovP">‹ 이전</button><span class="count" id="bovC">1 / 1</span><button class="btn sm" id="bovN">다음 ›</button></div>
  <div class="ctl" data-for="a-live" hidden><a class="btn sm" href="https://yongsup23-cpu.github.io/cyber9/" target="_blank" rel="noopener">새 창으로 열기 ↗</a></div>
  <div class="ctl" data-for="b-book" hidden><span class="ptitle"><small id="pPart"></small> <b id="pTitle"></b></span><button class="btn sm" id="prev">‹ 이전</button><span class="count" id="pCount"></span><button class="btn sm" id="next">다음 ›</button></div></div>
 </div>
@@ -180,7 +180,7 @@ let sx=null;stage.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{pa
 document.getElementById('prev').onclick=()=>go(cur-1);document.getElementById('next').onclick=()=>go(cur+1);paint();
 const FEAT=[{"src": "feat/ring.jpg", "t": "자유 이동", "d": "빈 곳을 클릭하거나 방향키로 전시관 안을 자유롭게 이동"}, {"src": "feat/search.jpg", "t": "사진 검색", "d": "입구 모니터에 단어를 넣으면 해당 사진이 차례로 나옵니다"}, {"src": "feat/auto.jpg", "t": "자동 관람", "d": "사진 앞으로 차례로 이동하며 설명을 보여 줍니다"}, {"src": "feat/zoom.jpg", "t": "크게 보기", "d": "사진을 확대하고 연도·설명을 함께 확인합니다"}, {"src": "feat/lobby.jpg", "t": "로비 화면", "d": "실제 날씨·시간·계절을 천장에 반영"}, {"src": "feat/taxi.jpg", "t": "창업 택시", "d": "1935년형 포드 디럭스를 3D로 재현, 360° 관람"}];
 document.querySelectorAll('.fitem').forEach(b=>b.onclick=()=>{const i=+b.dataset.i,img=document.getElementById('fbig');document.querySelectorAll('.fitem').forEach(x=>x.classList.toggle('on',x===b));img.style.opacity=0;setTimeout(()=>{img.src=FEAT[i].src;img.alt=FEAT[i].t+' 화면';document.getElementById('fcap').textContent=FEAT[i].t;img.style.opacity=1},180)});
-const BOV=[['report/r4.jpg','목적 · 목차'],['report/r6b.jpg','PART II 5개 챕터 구성']];let bo=0;
+const BOV=[['report/r4.jpg','목적 · 목차']];let bo=0;
 function bov(){document.getElementById('bovImg').src=BOV[bo][0];document.getElementById('bovC').textContent=(bo+1)+' / '+BOV.length;document.getElementById('bovP').disabled=bo===0;document.getElementById('bovN').disabled=bo===BOV.length-1}
 document.getElementById('bovP').onclick=()=>{if(bo>0){bo--;bov()}};document.getElementById('bovN').onclick=()=>{if(bo<BOV.length-1){bo++;bov()}};document.getElementById('bovImg').onclick=()=>{if(bo<BOV.length-1){bo++;bov()}};bov();
 
