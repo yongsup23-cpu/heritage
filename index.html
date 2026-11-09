@@ -34,6 +34,7 @@ button:focus-visible,a:focus-visible,.stage:focus-visible{outline:2px solid var(
 .subrow .subtabs{border-bottom:0;margin-top:0;flex:1 1 auto;min-width:0}
 .ctl{display:flex;align-items:center;gap:8px;padding-bottom:6px;flex:0 0 auto}
 .btn.sm{padding:5px 12px;font-size:13px}
+.subtabs .newwin{align-self:center;margin:0 0 4px 4px;text-decoration:none;white-space:nowrap}
 .ptitle{color:var(--mute);font-size:13px;max-width:44ch;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ptitle small{color:var(--ember);font-weight:700}
 .ptitle b{color:var(--ink);font-weight:500}
@@ -108,7 +109,6 @@ h2{font-family:var(--serif);font-size:22px;margin:0 0 4px}
  </nav></div>
 <div class="subrow"><nav class="subtabs" id="subs" role="tablist" aria-label="세부 보기"></nav>
  <div class="ctl" data-for="b-ov-x" hidden><button class="btn sm" id="bovP">‹ 이전</button><span class="count" id="bovC">1 / 1</span><button class="btn sm" id="bovN">다음 ›</button></div>
- <div class="ctl" data-for="a-live" hidden><a class="btn sm" href="https://yongsup23-cpu.github.io/cyber9/" target="_blank" rel="noopener">새 창으로 열기 ↗</a></div>
  <div class="ctl" data-for="b-book" hidden><span class="ptitle"><small id="pPart"></small> <b id="pTitle"></b></span><button class="btn sm" id="prev">‹ 이전</button><span class="count" id="pCount"></span><button class="btn sm" id="next">다음 ›</button></div></div>
 </div>
 
@@ -148,6 +148,7 @@ let lastSub={v:'v-ov',b:'b-ov',a:'a-ov'};
 function open(id){const p=document.getElementById(id); if(!p) return; const m=p.dataset.sub; lastSub[m]=id;
   mains.forEach(b=>b.setAttribute('aria-selected',b.dataset.main===m));
   subs.innerHTML=''; panes.filter(x=>x.dataset.sub===m).forEach(x=>{const b=document.createElement('button');b.setAttribute('role','tab');b.textContent=x.dataset.name;b.setAttribute('aria-selected',x.id===id);b.onclick=()=>open(x.id);subs.appendChild(b)});
+  if(m==='a'){const a=document.createElement('a');a.className='btn sm newwin';a.href='https://yongsup23-cpu.github.io/cyber9/';a.target='_blank';a.rel='noopener';a.textContent='새 창으로 열기 ↗';subs.appendChild(a)}
   panes.forEach(x=>x.hidden=x.id!==id);
   document.querySelectorAll('.ctl').forEach(c=>c.hidden=c.dataset.for!==id);
   if(id!=='v-play'){try{document.getElementById('vid').pause()}catch(e){}}
