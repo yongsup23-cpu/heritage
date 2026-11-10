@@ -97,6 +97,33 @@ h2{font-family:var(--serif);font-size:22px;margin:0 0 4px}
 .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px;color:var(--mute);font-size:13px}
 .row code{color:var(--ink);background:var(--bg2);border:1px solid var(--line);padding:3px 8px;border-radius:3px;word-break:break-all}
 @media (prefers-reduced-motion:reduce){.leaf{transition:none}}
+
+/* wide screens (TV, laptop): the menu becomes a left sidebar, so the report uses the full height of the screen */
+@media (min-width:900px){
+ body{padding-bottom:0}
+ .wrap{display:grid;grid-template-columns:200px minmax(0,1fr);column-gap:22px;align-items:start}
+ .bar{grid-column:1;grid-row:1;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:14px;padding:18px 18px 18px 0;border-right:1px solid var(--line);overflow-y:auto}
+ .pane{grid-column:2;grid-row:1;padding-top:12px;min-width:0}
+ .toprow{display:flex;flex-direction:column;gap:12px}
+ .ttl{white-space:normal;word-break:keep-all;padding-right:0;margin:0;font-size:19px;line-height:1.35}
+ .tabs{flex-direction:column;gap:6px;overflow:visible}
+ .tabs button{text-align:left;padding:7px 16px;font-size:14.5px}
+ .subrow{flex-direction:column;align-items:stretch;border-bottom:0;margin-top:0;gap:12px}
+ .subtabs{flex-direction:column;gap:2px;margin:0;border-bottom:0;overflow:visible}
+ .subtabs button{text-align:left;border-bottom:0;border-left:3px solid transparent;padding:7px 12px;font-size:14px}
+ .subtabs button[aria-selected="true"]{border-left-color:var(--ember);background:rgba(240,127,47,.08)}
+ .subtabs .newwin{align-self:flex-start;margin:4px 0 0 12px}
+ .ctl{flex-wrap:wrap;padding-bottom:0}
+ .ptitle{display:block;white-space:normal;max-width:none;width:100%;line-height:1.45}
+ .ptitle small,.ptitle b{display:block}
+ .fsbtn{position:static;order:9;margin-top:auto;align-self:flex-start}
+ .doc img{max-height:calc(100vh - 28px)}
+ .video video{max-height:calc(100vh - 86px)}
+ .stage{width:min(100%,calc((100vh - 70px)*1.445))}
+ .bookrow{grid-template-columns:minmax(0,1fr) 110px}
+ .fbig{width:min(100%,calc((100vh - 130px)*1.6))}
+ .frame{height:calc(100vh - 24px)}
+}
 </style>
 </head>
 <body>
